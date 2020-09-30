@@ -1,0 +1,5 @@
+INCLUDE = `mysql_config --cflags --libs` `xml2-config --cflags` `xml2-config --libs`
+test: db_connect.c
+	gcc db_connect.c -o connect ${INCLUDE} 
+clean:
+	rm connect
