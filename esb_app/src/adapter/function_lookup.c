@@ -10,17 +10,6 @@
  * provider's implementation of the transformation and transport.
  */
 
-void *tranform_bmd_Credit_svc(void *ptr, void *ptr1)
-{
-    printf("Transformation for Credit service: %d : %s \n", *((int *)ptr), ((char *)ptr1));
-    return "YES";
-}
-void *transport_bmd_Credit_svc(void *ptr, void *ptr1)
-{
-    printf("Transport for Credit service %d : %s \n", *((int *)ptr), ((char *)ptr1));
-    return "YES";
-}
-
 /* The ESB would have this table */
 const static struct
 {
@@ -41,7 +30,6 @@ char *call_function(const char *name, void *data, void *data1)
         if (!strcmp(function_map[i].name, name) && function_map[i].func)
         {
             return function_map[i].func(data, data1);
-            return 0;
         }
     }
     return "NO";

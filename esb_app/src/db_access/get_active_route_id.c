@@ -185,11 +185,10 @@ int get_active_route_id(char *sender, char *destination, char *message_type)
         fprintf(stderr, " %s\n", mysql_stmt_error(stmt));
         return -1;
     }
-    int route_id = 0;
 
     if (!mysql_stmt_fetch(stmt))
     {
-
+       int route_id;
         route_id = int_data;
         /* Free the result */
         mysql_free_result(prepare_meta_result);

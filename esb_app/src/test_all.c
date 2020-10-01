@@ -15,7 +15,6 @@
 #include "./adapter/test_adapter.c"
 #include "./db_access/test_db_access.c"
 
-
 static MunitSuite suite_tests[] = {
   {    
        "/test_bmd_suites" ,
@@ -49,10 +48,10 @@ static const MunitSuite suite = {
     suite_tests,               
     1,                         
     MUNIT_SUITE_OPTION_NONE    
-};*/
+};
 
 
 int main(int argc, const char *argv[])
  {
    munit_suite_main(&suite, NULL, argc, NULL);
- }
+ }*/

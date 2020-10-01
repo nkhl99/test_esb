@@ -27,8 +27,6 @@ test_queue_the_request(const MunitParameter params[], void *fixture)
 static MunitResult
 test_process_esb_request(const MunitParameter params[], void *fixture)
 {
-    bmd *b = (bmd *)fixture;
-
     munit_assert(process_esb_request("../bmd_files/bmd2.xml")==1);
     return MUNIT_OK;
 }

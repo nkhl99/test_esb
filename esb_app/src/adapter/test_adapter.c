@@ -35,9 +35,8 @@ char *get_str_data(char *file) {
 
   file_size=sizeof(char)*f_size+1;
   str_data=malloc(file_size);
-
-/* fread returns number of items actually read. */
-  result =fread(str_data,1,f_size,f);
+  
+  fclose(f);
   return strdup(str_data);
 }
 /**
@@ -77,8 +76,6 @@ payload_to_json_setup(const MunitParameter params[], void *user_data)
   
   char *file_created = payload_to_json(bmd_file, url);
   /* Copy file data into string */
-
-  char *json_data = get_str_data(file_created);
   return strdup(file_created);
 }
 

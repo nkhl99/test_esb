@@ -202,13 +202,9 @@ task_t *fetch_new_esb_request(void)
         return NULL;
 
     }
-    task_t *request = (task_t *)malloc(sizeof(task_t));
-    /* Fetch all rows */
-    row_count = 0;
-   
+    task_t *request = (task_t *)malloc(sizeof(task_t));   
     while (!mysql_stmt_fetch(stmt))
     {
-        row_count++;
         //fprintf(stdout, "  row %d\n", row_count);
 
         /* column 1 */

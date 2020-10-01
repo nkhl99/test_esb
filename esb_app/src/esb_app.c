@@ -290,7 +290,6 @@ cleanup:
 pthread_t thread_id[NUM_THREADS];
 void kore_parent_configure(int argc, char *argv[])
 {
-	int error;
 	printf("\n%%%%%%%%%% kore_parent_configure %%%%%%%%%%\n");
 	if (mysql_library_init(0, NULL, NULL))
 	{
@@ -301,7 +300,7 @@ void kore_parent_configure(int argc, char *argv[])
 	if (t == 1)
 		printf("Connected to db.\n");
 	for (int i = 0; i < NUM_THREADS; i++)
-	{
+	{   int error;
 		error = pthread_create(&(thread_id[i]), NULL,
 							   poll_database_for_new_requests, NULL);
 		if (error != 0)

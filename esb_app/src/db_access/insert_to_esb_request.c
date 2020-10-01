@@ -55,7 +55,6 @@ int insert_to_esb_request(char *sender_id, char *dest_id,
   MYSQL_BIND bind[9];
   my_ulonglong affected_rows;
   int param_count;
-  int id;
   char sender_id_data[STRING_SIZE];
   char dest_id_data[STRING_SIZE];
   char message_type_data[STRING_SIZE];
@@ -66,7 +65,6 @@ int insert_to_esb_request(char *sender_id, char *dest_id,
   char status_details_data[STRING_SIZE];
   MYSQL_TIME received_on_data;
   unsigned long str_length[8];
-  bool is_null;
 
   MYSQL *con; /*database connection handle*/
   /**
@@ -93,7 +91,7 @@ int insert_to_esb_request(char *sender_id, char *dest_id,
    */
   if (mysql_real_connect(con, HOST, USER, PASS,
                          DB_NAME, PORT, UNIX_SOCKET, FLAG) == NULL)
-  { 
+  {
     finish_with_error(con);
   }
   /* Prepare an INSERT query with 9 parameters */
@@ -253,8 +251,9 @@ int insert_to_esb_request(char *sender_id, char *dest_id,
   printf("connection id: %ld\n", mysql_thread_id(con));
 
   /*No error occurred and insert is successful*/
-  return 1;
   mysql_close(con);
+
+  return 1;
 }
 #endif
 /*testing with a sample input*/

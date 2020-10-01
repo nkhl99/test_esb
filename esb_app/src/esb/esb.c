@@ -29,7 +29,7 @@ int queue_the_request(bmd *b, char *file_path)
      * function returns 1 on successful insertion. 
      * function is defined in db_access module
      */
-    int rc = insert_to_esb_request(b->envelop_data->Sender,
+    success= insert_to_esb_request(b->envelop_data->Sender,
                                    b->envelop_data->Destination,
                                    b->envelop_data->MessageType,
                                    b->envelop_data->ReferenceID,
@@ -37,7 +37,7 @@ int queue_the_request(bmd *b, char *file_path)
                                    file_path, "RECEIVED",
                                    "received successfully",
                                    b->envelop_data->CreationDateTime);
-    if (rc >= 1)
+    if (success >= 1)
     {
         return success;
     }
